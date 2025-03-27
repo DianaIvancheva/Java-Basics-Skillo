@@ -1,2 +1,2 @@
-# Java-Basics-Skillo
+# Java Basics Skillo
 Skillo Automation QA Exercises
