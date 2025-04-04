@@ -1,8 +1,6 @@
 package lecture06;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class lecture06 {
     public static void main(String[] args) {
@@ -207,4 +205,84 @@ public class lecture06 {
         }
     }
 
+    public static void ex06() {
+//        Create and manage a list of lottery numbers. This exercise allows users to
+//        add lottery numbers, view the list of winning numbers, and check if a specific
+//        number is a winning number
+
+        Scanner myScanner = new Scanner(System.in);
+        Random random = new Random();
+        ArrayList<Integer> winningNumbers = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+            winningNumbers.add(random.nextInt(1, 35));
+        }
+
+        ArrayList<Integer> myNumbers = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Enter a number");
+            myNumbers.add(myScanner.nextInt());
+        }
+
+        ArrayList<Integer> guessesCorrectly = new ArrayList<>();
+        for (int number : myNumbers) {
+            if (winningNumbers.contains(number)) {
+                guessesCorrectly.add(number);
+            }
+        }
+
+        System.out.println("Winning numbers: " + winningNumbers);
+        System.out.println("Your numbers: " + myNumbers);
+        System.out.println("Numbers you guessed correctly: " + guessesCorrectly);
+
+    }
+
+    public static void ex07() {
+//        Create and manage a simple contact list using LinkedList. This exercise
+//        allows users to add contacts, view the list, and remove a contact
+
+        Scanner myScanner = new Scanner(System.in);
+
+        LinkedList<String> contactBook = new LinkedList<>();
+
+        contactBook.add("Maria");
+        contactBook.add("Georgi");
+        contactBook.add("Tosho");
+
+        boolean quitProgram = false;
+
+        while (quitProgram == false) {
+
+            System.out.println("What do you want to do? Select a number from 1 to 3");
+            System.out.println("1) View contact list \n" +
+                    "2) Add contact \n" +
+                    "3) Remove contact \n" +
+                    "4) Exit program");
+            int choice = myScanner.nextInt();
+            myScanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    for (String contact : contactBook) {
+                        System.out.println(contact);
+                    }
+                    break;
+                case 2:
+                    System.out.println("Who do you want to add?");
+                    contactBook.add(myScanner.nextLine());
+                    break;
+                case 3:
+                    System.out.println("Who do you want to remove?");
+                    contactBook.remove(myScanner.nextLine());
+                    break;
+                case 4:
+                    quitProgram = true;
+                    break;
+                default:
+                    System.out.println("Error");
+                    break;
+
+            }
+        }
+    }
 }
